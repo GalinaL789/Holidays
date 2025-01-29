@@ -13,10 +13,10 @@ class HolidayUpdater extends Thread {
     public void run() {
         while (true) {
             try {
-                // Задержка в 3 секунды
-                Thread.sleep(1000);
+                // Задержка
+                Thread.sleep(60000);
                 System.out.println("Calendar is updating");
-                System.out.println("Calendar is updated, the number of Holidays is {}" + calendar.getHolidays().size());
+                System.out.println("Calendar is updated, the number of Holidays is: " + calendar.getHolidays().size());
 
             } catch (InterruptedException e) {
                 e.printStackTrace();

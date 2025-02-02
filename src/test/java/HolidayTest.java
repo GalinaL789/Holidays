@@ -2,8 +2,7 @@ import org.example.Holiday;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HolidayTest {
     private static Holiday holiday;
@@ -15,11 +14,11 @@ public class HolidayTest {
 
     @Test
     void test_Positive_GetName() {
-        assertTrue("New Year".equals(holiday.getName()));
+        assertEquals("New Year", holiday.getName());
     }
 
     @Test
     void test_Negative_GetName() {
-        assertFalse("New".equals(holiday.getName()));
+        assertNotEquals("New", holiday.getName());
     }
 }

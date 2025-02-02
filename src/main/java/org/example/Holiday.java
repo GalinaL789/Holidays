@@ -19,11 +19,24 @@ public class Holiday {
     private LocalDate date;
 
     public Holiday(String name, String date) {
-      //  if(name.isString)  //throw exception RunTime exception
-        this.name = name;
+       if(checkString(name)){
+            this.name = name;
+        }
+        else
+        {
+            System.out.println("input correct title of the Holiday, please");
+            throw new RuntimeException("he title of holiday is incorrect" );
+        }
         this.date = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
-        throw new RuntimeException("Privet Vasya!" );
+
     }
+    private boolean checkString(String name) {
+        if (name == null || name.isEmpty()) {
+            return false; // Null or empty strings are not valid names
+        }
+        return name.matches("^[a-zA-Z]+$"); // Ensures only letters are present
+    }
+
 
     public String getName() {
         return name;

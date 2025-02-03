@@ -25,7 +25,7 @@ public class Holiday {
         else
         {
             System.out.println("input correct title of the Holiday, please");
-            throw new RuntimeException("he title of holiday is incorrect" );
+            throw new RuntimeException("the title of holiday is incorrect" );
         }
         this.date = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
 
@@ -34,7 +34,7 @@ public class Holiday {
         if (name == null || name.isEmpty()) {
             return false; // Null or empty strings are not valid names
         }
-        return name.matches("^[a-zA-Z]+$"); // Ensures only letters are present
+        return name.matches("^[a-zA-Z ]+$"); // Ensures only letters are present
     }
 
 

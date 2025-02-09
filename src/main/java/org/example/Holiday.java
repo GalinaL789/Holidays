@@ -11,32 +11,41 @@ import java.sql.Date;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.format.DateTimeParseException;
 
 public class Holiday {
     private String name;
     private LocalDate date;
 
+    // Constructor to initialize a Holiday object with a name and date
     public Holiday(String name, String date) {
-       if(checkString(name)){
+        // Validate the holiday name before assigning it
+        if (checkString(name)) {
             this.name = name;
+        } else {
+            System.out.println("Input correct title of the Holiday, please");
+            throw new IllegalArgumentException("The title of the holiday is incorrect");
         }
-        else
-        {
-            System.out.println("input correct title of the Holiday, please");
-            throw new RuntimeException("the title of holiday is incorrect" );
-        }
-        this.date = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
 
+        // Convert the date string into a LocalDate object using ISO format
+        try {
+            this.date = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException("The date is null");
+        } catch (DateTimeParseException e) {
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException("The date is incorrect");
+        }
     }
-    private boolean checkString(String name) {
+
+    // Method to check the validity of the holiday name
+    private static boolean checkString(String name) {
         if (name == null || name.isEmpty()) {
-            return false; // Null or empty strings are not valid names
+            return false; // Null or empty strings are considered invalid
         }
-        return name.matches("^[a-zA-Z ]+$"); // Ensures only letters are present
+        return name.matches("^[a-zA-Z ]+$"); // Allows only letters and spaces
     }
-
 
     public String getName() {
         return name;

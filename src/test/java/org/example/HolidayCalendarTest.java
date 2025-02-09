@@ -38,14 +38,12 @@ class HolidayCalendarTest {
         assertThrows(IllegalArgumentException.class, () -> holidayCalendar.addHoliday(null));
         assertTrue(holidayCalendar.getHolidays().isEmpty()); // List should remain empty
 
-        // Try adding a holiday with an empty name
-        Holiday invalidHoliday = new Holiday("", "2025-01-01");
-        assertThrows(IllegalArgumentException.class, () -> holidayCalendar.addHoliday(invalidHoliday));
+        // Try initialize a holiday with an empty name
+        assertThrows(IllegalArgumentException.class, () -> new Holiday("", "2025-01-01"));
         assertTrue(holidayCalendar.getHolidays().isEmpty()); // Still empty
 
-        // Try adding a holiday with a null date
-        Holiday holidayWithoutDate = new Holiday("No Date", null);
-        assertThrows(IllegalArgumentException.class, () -> holidayCalendar.addHoliday(holidayWithoutDate));
+        // Try initialize a holiday with a null date
+        assertThrows(IllegalArgumentException.class, () -> new Holiday("No Date", null));
         assertTrue(holidayCalendar.getHolidays().isEmpty()); // Still empty
 
         // Add a valid holiday

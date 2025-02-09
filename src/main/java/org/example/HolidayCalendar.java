@@ -12,6 +12,10 @@ public class HolidayCalendar {
     private List<Holiday> holidays = new ArrayList<>();
 
     public synchronized void addHoliday(Holiday holiday) {
+        if(holiday==null)
+        {
+           throw new IllegalArgumentException("Holiday object is null");
+        }
         holidays.add(holiday);
         System.out.println("Праздник добавлен: " + holiday.getName());
     }

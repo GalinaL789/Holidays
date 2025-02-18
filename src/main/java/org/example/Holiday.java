@@ -12,8 +12,11 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.logging.Logger;
 
 public class Holiday {
+    private static final Logger logger = Logger.getLogger(Holiday.class.getName());
+
     private String name;
     private LocalDate date;
 
@@ -22,7 +25,6 @@ public class Holiday {
         // Validate the holiday name before assigning it
         if (checkString(name)) {
             this.name = name.trim();
-            ;
         } else {
             System.out.println("Input correct title of the Holiday, please");
             throw new IllegalArgumentException("The title of the holiday is incorrect");
@@ -42,10 +44,19 @@ public class Holiday {
 
     // Method to check the validity of the holiday name
     private static boolean checkString(String name) {
-        if (name == null || name.isEmpty()) {
-            return false; // Null or empty strings are considered invalid
+        if (name == null) {
+            logger.severe("Holiday name is null.");
+            return false; // Holiday name cannot be null.
         }
-        return name.matches("^[a-zA-Z ]+$"); // Allows only letters and spaces
+        if (name.isEmpty()) {
+            logger.severe("Holiday name is empty.");
+            return false; // Holiday name cannot be empty.
+        }
+        if (!name.matches("^[a-zA-Z ]+$")/*Allows only letters and spaces */) {
+            logger.severe("Holiday name contains invalid characters.");
+            return false;// Holiday name can only contain letters and spaces.
+        }
+        return true; // If all checks pass, the name is valid
     }
 
     public String getName() {

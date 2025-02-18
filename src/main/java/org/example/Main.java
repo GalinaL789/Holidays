@@ -27,9 +27,12 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.println("Введите название праздника:");
-                    String name = scanner.next();
+                    // Consume the leftover newline character
+                    scanner.nextLine();  // This will clear the buffer
+                    String name = scanner.nextLine();  // Now you can properly read the full name
+
                     System.out.println("Введите дату праздника в формате 'yyyy-dd-mm':");
-                    String date="";
+                    String date = "";
                     while (!date.contains("-")) {
                         date = scanner.next();
                     }

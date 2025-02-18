@@ -21,7 +21,8 @@ public class Holiday {
     public Holiday(String name, String date) {
         // Validate the holiday name before assigning it
         if (checkString(name)) {
-            this.name = name;
+            this.name = name.trim();
+            ;
         } else {
             System.out.println("Input correct title of the Holiday, please");
             throw new IllegalArgumentException("The title of the holiday is incorrect");

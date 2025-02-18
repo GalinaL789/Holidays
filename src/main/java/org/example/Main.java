@@ -30,7 +30,7 @@ public class Main {
                     //Changed next to nextLine
                     String name = scanner.nextLine();
                     System.out.println("Введите дату праздника в формате 'yyyy-dd-mm':");
-                    String date="";
+                    String date = "";
                     while (!date.contains("-")) {
                         date = scanner.next();
                     }

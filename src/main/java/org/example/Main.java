@@ -27,6 +27,7 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.println("Введите название праздника:");
+                    //Changed next to nextLine
                     String name = scanner.nextLine();
                     System.out.println("Введите дату праздника в формате 'yyyy-dd-mm':");
                     String date="";
